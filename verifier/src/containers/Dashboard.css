@@ -1,0 +1,13 @@
+.Home {
+  width: 100%;
+}
+
+@media all and (min-width: 600px) {
+  .Home {
+    width: 600px;
+  }
+}
+
+.Home .card {
+  margin-bottom: 15px;
+}
