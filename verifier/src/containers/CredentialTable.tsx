@@ -40,8 +40,8 @@ const CredentialTable = () => {
     if (credentialShareResponseToken) {
       credentialShareResponseToken.map((token: string) => {
         // Check if the vcData already has the token = means it was validated before
-        const existingData = vcData.filter(data => data.token == token)
-        if (existingData.length == 0) {
+        const existingData = vcData.filter(data => data.token === token)
+        if (existingData.length === 0) {
           return onValidate(token);
         }
       })

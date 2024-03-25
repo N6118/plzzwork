@@ -32,7 +32,7 @@ const LayoutHeaderNavigation = () => {
         <NavbarBrand>
           <Link to={routes.ROOT}>
             {/* <img src={drivingLicenseLogo} className='logo-icon' alt='logo'/> */}
-            <img src="http://amplifi.mohua.gov.in/assets/images/logo/mohua-login.png" className='logo-name' alt='logo-name'/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Lam_Research_logo.svg/800px-Lam_Research_logo.svg.png" className='logo-name' alt='logo-name'/>
           </Link>
         </NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

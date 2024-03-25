@@ -1,10 +1,11 @@
-import { AffinityWallet as Wallet } from '@affinidi/wallet-browser-sdk'
-import { __dangerous } from '@affinidi/wallet-core-sdk'
-import JwtService from "@affinidi/common/dist/services/JwtService";
+import { AffinityWallet as Wallet } from '@affinidi/wallet-browser-sdk';
+import { __dangerous } from '@affinidi/wallet-core-sdk';
+import jwt from 'jsonwebtoken';
 import SdkError from "@affinidi/wallet-core-sdk/dist/shared/SdkError";
 import config from "../config";
-import cloudWalletApi from './apiService'
-import LOCAL_STORAGE_KEY from './consts'
+import cloudWalletApi from './apiService';
+import LOCAL_STORAGE_KEY from './consts';
+
 
 const { SDK_ACCESS_TOKEN } = LOCAL_STORAGE_KEY
 
@@ -26,7 +27,7 @@ class SDKConfigurator {
 class SdkService {
   constructor() {
     this.sdk = Wallet
-    this.jwtService = new JwtService()
+    
   }
 
   async init() {
@@ -100,15 +101,17 @@ class SdkService {
   }
 
   parseToken(token) {
-    return JwtService.fromJWT(token)
+    try {
+      const decoded = jwt.decode(token); // Replace with jwt.verify if you have the signing key
+      return decoded;
+    } catch (error) {
+      console.error('Failed to parse token:', error);
+      return null;
+    }
   }
 
   static _saveAccessTokenToLocalStorage(accessToken) {
-    try {
-      localStorage.setItem(SDK_ACCESS_TOKEN, accessToken)
-    } catch (err) {
-      console.error(err)
-    }
+    localStorage.setItem(SDK_ACCESS_TOKEN, accessToken);
   }
 }
 

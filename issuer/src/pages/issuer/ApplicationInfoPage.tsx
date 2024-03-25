@@ -34,9 +34,7 @@ const ApplicationInfoPage: React.FC<IProps & RouteComponentProps> = (
     return true;
   };
 
-  /**
-   * Function for signing an unsigned VC.
-   * */
+ 
   const approveVC = async () => {
     try {
       if (isJson(VCschemaData)) {
